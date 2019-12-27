@@ -12,11 +12,11 @@
     <div class="slider">
       <div class="slider-body">
         <div class="slider-img" id="slider-item"></div>
-        <div class="fade">
-          <div class="btn prev" onclick="toggle(i-1)"></div>
+        <div class="fade" id="prev">
+          <div class="btn prev" onclick="toggle(current-1)"></div>
         </div>
-        <div class="fade">
-          <div class="btn next" onclick="toggle(i+1)"></div>
+        <div class="fade" id="next">
+          <div class="btn next" onclick="toggle(current+1)"></div>
         </div>
       </div>
       <div class="slider-footer" id="slider-footer">

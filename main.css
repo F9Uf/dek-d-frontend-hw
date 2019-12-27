@@ -4,6 +4,10 @@ body, * {
   box-sizing: border-box;
 }
 
+body {
+  background-color: black;
+}
+
 .container {
   /* border: 2px burlywood dashed; */
   width: 100vw;
@@ -86,12 +90,13 @@ body, * {
 }
 .slider-footer .dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: #CCBF97;
   margin: 5px 10px;
   border-radius: 50%;
   transition: .5s all;
+  cursor: pointer;
 }
 
 .slider-footer .dot.active {
