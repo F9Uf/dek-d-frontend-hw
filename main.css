@@ -5,7 +5,7 @@ body, * {
 }
 
 body {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 .container {
@@ -18,10 +18,8 @@ body {
   overflow: hidden;
 }
 
-
 .slider-body {
   display: inline-block;
-  /* background-color: cadetblue; */
   position: relative;
   width: 100vw;
 }
@@ -38,9 +36,12 @@ body {
   position: relative;
   display: inline-block;
   translate: .3s all linear;
-  width: auto;
+  width: 700px;
   height: 373px;
-  margin-right: 10px;
+  margin-right: 20px;
+  -webkit-box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
+  -moz-box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
+  box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
 }
 
 .slider-body .fade {
@@ -101,4 +102,18 @@ body {
 
 .slider-footer .dot.active {
   background-color: chocolate;
+}
+
+@media (max-width: 700px) {
+  .slider-body .slider-img img {
+    width: 300px;
+    height: auto;
+  }
+  .slider-body .slider-img {
+    position: relative;
+    height: auto;
+    transition: .5s all;
+    width: 6000px;
+    left: calc(50vw - 150px);
+  }
 }

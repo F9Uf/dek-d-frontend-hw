@@ -24,8 +24,9 @@ sliderFooter.childNodes[current].classList.add("active");
 function toggle (index) {
   if (index > N ) index = 1;
   if (index < 1) index = N;
-  console.log(index);
-  sliderItem.style.transform = `translateX(-${710 * (index - 1)}px)`;
+  var imageWidth = sliderItem.childNodes[index-1].width;
+  
+  sliderItem.style.transform = `translateX(-${(imageWidth + 20) * (index - 1)}px)`;
   current = index;
   for(let j = 1; j <= N; j++) {
     if (j === current) {
