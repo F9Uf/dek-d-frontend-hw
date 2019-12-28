@@ -10,7 +10,6 @@ for (let i = 0; i < N; i++) {
   var imgSrc = `./images/image${i+1}.jpg`;
   var newNode = document.createElement("img");
   newNode.src = imgSrc;
-  newNode.draggable = true;
   sliderItem.appendChild(newNode)
 
   var newDot = document.createElement("div");
@@ -46,3 +45,57 @@ function toggle (index) {
 
 // handle resize window for beautiful responsive
 window.onresize = _ => toggle(current);
+
+var startpos = 0, endpos;
+var press = false;
+sliderItem.addEventListener("pointerdown", evt => {
+  evt.preventDefault();
+  startpos = evt.clientX;
+  press = true
+})
+sliderItem.addEventListener("pointermove", evt => {
+  if (press) {
+    // console.log(evt.pageX);
+    
+    var currentTranslateX = getTranslateX(sliderItem);
+    // var windowWidth = window.innerWidth;
+    sliderItem.style.transform = `translateX(${currentTranslateX + (evt.pageX - startpos)}px)`;
+    
+  }
+})
+sliderItem.addEventListener("pointerup", evt => {
+  press = false;
+  endpos = evt.clientX;
+
+  var dir = endpos > startpos ? 'LTR': 'RTL';
+
+  var currentTranslateX = getTranslateX(sliderItem);
+    
+  if (dir === 'LTR' && currentTranslateX > -(720*(current-1))) {
+    toggle(current-1);    
+  } else {
+    toggle(current+1);
+  }
+})
+
+sliderItem.addEventListener("pointerleave", evt => {
+  press = false;
+  endpos = evt.clientX;
+
+  var dir = endpos > startpos ? 'LTR': 'RTL';
+
+  var currentTranslateX = getTranslateX(sliderItem);
+    
+  if (dir === 'LTR' && currentTranslateX > -(720*current-1)) {
+    toggle(current-1);    
+  } else {
+    toggle(current+1);
+  }
+})
+
+
+const getTranslateX = el => {
+  var style = getComputedStyle(el);
+  var matrix = new WebKitCSSMatrix(style.webkitTransform);
+  return matrix.m41
+}
