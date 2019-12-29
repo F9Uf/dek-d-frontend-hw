@@ -3,6 +3,9 @@
 ## Description
 This project was created as a homework for application the Dek-D internship program 2020 as a frontend developer role.
 
+## Demo
+https://f9uf.github.io/dek-d-frontend-hw/
+
 ## How to run
 - Clone this repo
 - Open index.html in your browser
