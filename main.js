@@ -2,7 +2,7 @@ var sliderItem = document.getElementById("slider-item");
 var sliderFooter = document.getElementById("slider-footer");
 var prevTab = document.getElementById("prev");
 
-var N = 5
+var N = 5 // <======== change image size
 var current = 1;
 
 // initial create dom from data images
