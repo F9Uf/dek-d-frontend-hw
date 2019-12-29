@@ -14,10 +14,11 @@ https://f9uf.github.io/dek-d-frontend-hw/
 - Native HTML,CSS and JS
 
 ## Features
-- Can slide the Slides to left or right by using click `left button` or `right button`
-- Can slide the Slides by using `touching` and `mousing`
-- Can click the `dot` in bottom to change the Slides's page as you want
-- Support all the devices(mobile, pc and tablet) as a `responsive design`
+- [/] Can slide the Slides to left or right by using click `left button` or `right button`
+- [/] Can slide the Slides by using `touching` and `mousing`
+- [/] Can click the `dot` in bottom to change the Slides's page as you want
+- [/] Support all the devices(mobile, pc and tablet) as a `responsive design`
+- [ ] Scroll to change the Slides
 
 ## Owner
 - Charnsak Dangmanee (Tose)
