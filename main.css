@@ -42,6 +42,10 @@ body {
   -webkit-box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
   -moz-box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
   box-shadow: 5px 5px 30px -10px rgba(255,255,255,0.15);
+  cursor: grab;
+}
+.slider-body .slider-img img:active {
+  cursor: grabbing;
 }
 
 .slider-body .fade {

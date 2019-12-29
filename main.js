@@ -46,21 +46,22 @@ function toggle (index) {
 // handle resize window for beautiful responsive
 window.onresize = _ => toggle(current);
 
+// handle touch slide
 var startpos = 0, endpos;
 var press = false;
+
+// handle touch slide for mouse pointer
 sliderItem.addEventListener("pointerdown", evt => {
   evt.preventDefault();
-  startpos = evt.clientX;
-  press = true
+  if (evt.pointerType === 'mouse') {
+    startpos = evt.clientX;
+    press = true
+  }
 })
 sliderItem.addEventListener("pointermove", evt => {
-  if (press) {
-    // console.log(evt.pageX);
-    
+  if (press && evt.pointerType === 'mouse') {
     var currentTranslateX = getTranslateX(sliderItem);
-    // var windowWidth = window.innerWidth;
-    sliderItem.style.transform = `translateX(${currentTranslateX + (evt.pageX - startpos)}px)`;
-    
+    sliderItem.style.transform = `translateX(${currentTranslateX + (evt.pageX - startpos)}px)`;    
   }
 })
 sliderItem.addEventListener("pointerup", evt => {
@@ -69,9 +70,28 @@ sliderItem.addEventListener("pointerup", evt => {
   press = false;
   
 })
-
 sliderItem.addEventListener("pointerleave", evt => {
-  endpos = evt.clientX;
+  if (evt.pointerType === 'mouse') {
+    endpos = evt.clientX;
+    slideToToggle();
+    press = false;
+  }
+  
+})
+
+// handle touch slide for mobile pointer
+sliderItem.addEventListener("touchstart", evt => {
+  startpos = evt.touches[0].clientX;
+  press = true;
+})
+sliderItem.addEventListener("touchmove", evt => {
+  if (press) {
+    var currentTranslateX = getTranslateX(sliderItem);
+    sliderItem.style.transform = `translateX(${currentTranslateX + (evt.touches[0].pageX - startpos)}px)`;    
+  }
+})
+sliderItem.addEventListener("touchend", evt => {
+  endpos = evt.changedTouches[0].clientX;
   slideToToggle();
   press = false;
   
@@ -81,8 +101,10 @@ function slideToToggle () {
   var dir = endpos > startpos ? 'LTR': 'RTL';
 
   var currentTranslateX = getTranslateX(sliderItem);
+  var imageWidth = sliderItem.childNodes[0].width;
+  
   if (press) {
-    if (dir === 'LTR' && currentTranslateX > -(720*current-1)) {
+    if (dir === 'LTR' && currentTranslateX > -((imageWidth+20)*current-1)) {
       toggle(current-1);    
     } else {
       toggle(current+1);
