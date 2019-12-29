@@ -64,35 +64,32 @@ sliderItem.addEventListener("pointermove", evt => {
   }
 })
 sliderItem.addEventListener("pointerup", evt => {
-  press = false;
   endpos = evt.clientX;
-
-  var dir = endpos > startpos ? 'LTR': 'RTL';
-
-  var currentTranslateX = getTranslateX(sliderItem);
-    
-  if (dir === 'LTR' && currentTranslateX > -(720*(current-1))) {
-    toggle(current-1);    
-  } else {
-    toggle(current+1);
-  }
+  slideToToggle();
+  press = false;
+  
 })
 
 sliderItem.addEventListener("pointerleave", evt => {
-  press = false;
   endpos = evt.clientX;
+  slideToToggle();
+  press = false;
+  
+})
 
+function slideToToggle () {
   var dir = endpos > startpos ? 'LTR': 'RTL';
 
   var currentTranslateX = getTranslateX(sliderItem);
-    
-  if (dir === 'LTR' && currentTranslateX > -(720*current-1)) {
-    toggle(current-1);    
-  } else {
-    toggle(current+1);
-  }
-})
+  if (press) {
+    if (dir === 'LTR' && currentTranslateX > -(720*current-1)) {
+      toggle(current-1);    
+    } else {
+      toggle(current+1);
+    }
 
+  }
+}
 
 const getTranslateX = el => {
   var style = getComputedStyle(el);
